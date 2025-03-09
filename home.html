@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Tenerife</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map { height: 800px; }
+        .legend {
+            background: white;
+            padding: 10px;
+            line-height: 1.5em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .legend span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mapa de Lugares Recomendados en Tenerife</h2>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([28.2916, -16.6291], 9);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        
+        function addMarker(lat, lon, title, desc, color) {
+            L.circleMarker([lat, lon], {
+                color: color,
+                radius: 8,
+                fillColor: color,
+                fillOpacity: 0.8
+            }).addTo(map).bindPopup(`<b>${title}</b><br>${desc}`);
+        }
+        
+        // Puntos clave (Rojo)
+        addMarker(28.3673, -16.8269, "Finca Quiñones (Boda)", "Lugar de la boda en Los Silos", "red");
+        addMarker(28.4192, -16.5446, "Puerto de la Cruz (Preboda)", "Evento informal de la preboda", "red");
+        addMarker(28.4827, -16.3421, "Aeropuerto Tenerife Norte (TFN)", "Aeropuerto recomendado", "red");
+        
+        // Sitios turísticos (Azul)
+        addMarker(28.4901, -16.3163, "Playa de las Gaviotas", "Playa tranquila de arena negra", "blue");
+        addMarker(28.5675, -16.1949, "Cruz del Carmen", "Mirador y senderos en Anaga", "blue");
+        addMarker(28.5700, -16.1894, "Taganana", "Pueblo con encanto y playas naturales", "blue");
+        addMarker(28.3909, -16.5250, "La Orotava", "Casco histórico colonial", "blue");
+        addMarker(28.3725, -16.7644, "Garachico", "Antiguo puerto con piscinas naturales", "blue");
+        addMarker(28.3671, -16.8344, "Masca", "Pueblo en un barranco impresionante", "blue");
+        addMarker(28.3322, -16.9205, "Teno", "Faro y paisajes salvajes", "blue");
+        addMarker(28.3536, -16.3726, "Candelaria", "Basílica de la Patrona de Canarias", "blue");
+        addMarker(28.0491, -16.5433, "El Médano", "Destino de windsurf y kitesurf", "blue");
+        addMarker(28.2436, -16.8390, "Los Gigantes", "Acantilados espectaculares", "blue");
+        addMarker(28.2722, -16.6426, "El Teide", "Volcán y parque nacional", "blue");
+        
+        // Restaurantes y guachinches (Verde)
+        addMarker(28.4942, -16.3076, "Lena Tenerife", "Restaurante en San Andrés", "green");
+        addMarker(28.5647, -16.1915, "Guachinche Bibi y Mana", "Comida casera y vino", "green");
+        addMarker(28.3723, -16.5256, "Restaurante Xarko", "Gastronomía innovadora", "green");
+        addMarker(28.4197, -16.5500, "Chicha Morada by Víctor Suárez", "Comida peruana", "green");
+        addMarker(28.4185, -16.5481, "Tasca Ihuey", "Cocina de autor", "green");
+        addMarker(28.4201, -16.5487, "Restaurante Zumaque", "Fusión de sabores", "green");
+        addMarker(28.2482, -16.8372, "Tasca Restaurante Los Pinos", "Tradicional de Garachico", "green");
+        addMarker(28.0491, -16.5377, "Chiringuito Pirata", "Ambiente relajado en la playa", "green");
+        addMarker(28.0513, -16.7148, "Marisquería Agua y Sal", "Especialidad en marisco", "green");
+        
+        // Leyenda
+        var legend = L.control({ position: "bottomright" });
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create("div", "legend");
+            div.innerHTML += '<span style="background: red"></span> Puntos clave<br>';
+            div.innerHTML += '<span style="background: blue"></span> Sitios turísticos<br>';
+            div.innerHTML += '<span style="background: green"></span> Restaurantes y guachinches';
+            return div;
+        };
+        legend.addTo(map);
+    </script>
+</body>
+</html>
