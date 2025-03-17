@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa de Tenerife</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        #map { height: 800px; }
+        /* Asegurar que no haya márgenes ni padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Evitar barras de desplazamiento */
+        }
+
+        /* El mapa ocupa toda la pantalla */
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+
         .legend {
             background: white;
             padding: 10px;
@@ -24,10 +37,9 @@
     </style>
 </head>
 <body>
-    <h2>Mapa de Lugares Recomendados en Tenerife</h2>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([28.2916, -16.6291], 9);
+        var map = L.map('map').setView([28.2916, -16.6291], 10);
         
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
@@ -42,42 +54,116 @@
             }).addTo(map).bindPopup(`<b>${title}</b><br>${desc}`);
         }
         
-        // Puntos clave (Rojo)
-        addMarker(28.3673, -16.8269, "Finca Quiñones (Boda)", "Lugar de la boda en Los Silos", "red");
-        addMarker(28.4192, -16.5446, "Puerto de la Cruz (Preboda)", "Evento informal de la preboda", "red");
-        addMarker(28.4827, -16.3421, "Aeropuerto Tenerife Norte (TFN)", "Aeropuerto recomendado", "red");
         
-        // Sitios turísticos (Azul)
-        addMarker(28.4901, -16.3163, "Playa de las Gaviotas", "Playa tranquila de arena negra", "blue");
-        addMarker(28.5675, -16.1949, "Cruz del Carmen", "Mirador y senderos en Anaga", "blue");
-        addMarker(28.5700, -16.1894, "Taganana", "Pueblo con encanto y playas naturales", "blue");
-        addMarker(28.3909, -16.5250, "La Orotava", "Casco histórico colonial", "blue");
-        addMarker(28.3725, -16.7644, "Garachico", "Antiguo puerto con piscinas naturales", "blue");
-        addMarker(28.3671, -16.8344, "Masca", "Pueblo en un barranco impresionante", "blue");
-        addMarker(28.3322, -16.9205, "Teno", "Faro y paisajes salvajes", "blue");
-        addMarker(28.3536, -16.3726, "Candelaria", "Basílica de la Patrona de Canarias", "blue");
-        addMarker(28.0491, -16.5433, "El Médano", "Destino de windsurf y kitesurf", "blue");
-        addMarker(28.2436, -16.8390, "Los Gigantes", "Acantilados espectaculares", "blue");
-        addMarker(28.2722, -16.6426, "El Teide", "Volcán y parque nacional", "blue");
+        
+
+           
+
+    
+        
+        // Playas y Charcos (Azul)
+        addMarker(28.4684784,-16.4556598, "Playa de Rojas", "Preciosos paisajes con aguas cristalinas. La carretera no es muy amigable.", "#818E6E");
+        addMarker(28.5667219,-16.3258253, "Punta del Hidalgo", "Piscina natural y charquitos. Bonito atardecer.",  "#818E6E");
+        addMarker(28.5735022,-16.1936234, "Playa de Benijo", "",  "#818E6E");
+        addMarker(28.5128789,-16.1761492, "Playa de las Gaviotas", "Es una de nuestras playas favoritas. Playa de arena negra.",  "#818E6E");
+        addMarker(28.5080069,-16.1843748, "Playa de las Teresitas", "De las playas más famosas, aunque no es de nuestras favoritas ya que suele tener mucho viento y la arena artificial se vuela.",  "#818E6E");
+        addMarker(28.397639,-16.5925117, "Playa de Castro", "Pequeña caminata hasta la playa.", "#818E6E");
+        addMarker(28.4177224,-16.5202583, "Playa del Bollullo", "Una de nuestras playas favoritas, es de arena negra.", "#818E6E");
+        addMarker(28.4015081,-16.3271907, "Playa de Radazul", "Es más un puertito que una playa. Lugar favorito de Pablo para un bañito. Después del chapuzón puedes aprovechar para comer en el Restaurante La Terraza de Monik.",  "#818E6E");
+        addMarker(28.2061081,-16.8349791, "Piscina Natural La Jaquita", "Piscinas naturales y calitas. Hay que mirar las mareas antes de ir. Siempre ir en marea alta.",  "#818E6E");
+        
+
+
+        // Sitios/Actividades recomendadas
+        addMarker(28.469797,-16.3083552, "San Cristobal de la Laguna", "", "#9E8431");
+        addMarker(28.5303329,-16.2804559, "Mirador Cruz del Carmen", "Desde este mirador salen muchas rutas para caminar por el parque rural de Anaga",  "#9E8431");
+        addMarker(28.5555629,-16.2355488, "Taganana", "Taganana fue el primer pueblo del que Pablo se enamoró en Tenerife. Te recomendamos una ruta de día completo en el que comiences en Cruz del Carmen (donde podrás hacer diferentes rutas de la duración que consideres), seguimos por la carretera hacia Taganana con parada obligatoria en Guachinche Bibi y Mana para comer y acabamos el día con un bañito en alguna de las playas mencionadas.", "#9E8431");
+        addMarker(28.4633506,-16.2518818, "Mercado Nuestra Señora de Africa", "Mercado de Santa Cruz de Tenerife, muy agradable para pasear y picar algo.",  "#9E8431");
+        addMarker(28.3690322,-16.715282, "Icod de los Vinos", "Emblemático drago mileanrio.", "#9E8431");
+        addMarker(28.3725569,-16.7630873, "Garachico", "Pintoresco municipio de la costa norte.", "#9E8431");
+        addMarker(28.4091308,-16.5484337, "Puerto de la Cruz", "", "#9E8431");
+        addMarker(28.4084635,-16.5646617, "Loro Parque", "Zoológico, buen plan para ir con niños", "#9E8431");
+        addMarker(28.3929251,-16.5184571, "La Orotava", "Pueble que desata por su casco histórico, declarado conjunto histórico-artístico.", "#9E8431");
+        addMarker(28.4821989, -16.4345189, "Mirador de la Garañona", "Mirador para disfrutar de la costa del Sauzal", "#9E8431");
+        addMarker(28.3021837,-16.8450618, "Masca", "Una de las zonas más impresionantes de Tenerife. Masca se trata de un pequeño y pintoresco pueblo, es famoso por su impresionante entorno natural, con un paisaje montañoso, profundos barrancos y vistas espectaculares.", "#9E8431");
+        addMarker(28.3190132,-16.8588438, "Teno", "Punta noroeste de la isla. Para visitarla, es necesario dejar el vehículo en Buenavista del Norte y coger una guagua desde la estación de este municipio. Solo se permite el acceso a través de este servicio. Tiene un faro, vistas de los acantilados y puedes aprovechar para darte un baño. Precioso atardecer.", "#9E8431");
+        addMarker(28.2483798,-16.842271, "Los Gigantes", "Los acantilados de los Gigantes son impresionantes formaciones rocosas que se elevan entre 300 y 600 metros sobre el océano Atlántico. La playa es muy pequeña y aparcar un dolor de muelas. Lo más facil es verlos desde un mirador un poco más arriba.", "#9E8431");
+        addMarker(28.0720927,-16.7281601, "Siam Park", "Mejor parque acuático del mundo.", "#9E8431");
+        addMarker(28.3543571,-16.3705546, "Candelaria", "Pueblo costero que alberga la Basílica de Nuestra Señora de Candelaria", "#9E8431");
+        addMarker(28.0457382,-16.5439161, "El Medano", "Localidad costera caracterizada por sus actividades de windsurf y kitesurf. Ambiente relajado y bohemio.", "#9E8431");
+        addMarker(28.41472,-16.4080159, "Forestal Park", "Parque de tirolinas", "#9E8431");
+        addMarker(28.2485465,-16.6186871, "El Tiede", "Patrimonio de la humanidad.", "#9E8431");
+
+        
+
         
         // Restaurantes y guachinches (Verde)
-        addMarker(28.4942, -16.3076, "Lena Tenerife", "Restaurante en San Andrés", "green");
-        addMarker(28.5647, -16.1915, "Guachinche Bibi y Mana", "Comida casera y vino", "green");
-        addMarker(28.3723, -16.5256, "Restaurante Xarko", "Gastronomía innovadora", "green");
-        addMarker(28.4197, -16.5500, "Chicha Morada by Víctor Suárez", "Comida peruana", "green");
-        addMarker(28.4185, -16.5481, "Tasca Ihuey", "Cocina de autor", "green");
-        addMarker(28.4201, -16.5487, "Restaurante Zumaque", "Fusión de sabores", "green");
-        addMarker(28.2482, -16.8372, "Tasca Restaurante Los Pinos", "Tradicional de Garachico", "green");
-        addMarker(28.0491, -16.5377, "Chiringuito Pirata", "Ambiente relajado en la playa", "green");
-        addMarker(28.0513, -16.7148, "Marisquería Agua y Sal", "Especialidad en marisco", "green");
+        addMarker(28.4901513,-16.3192139, "Dulcería la Capital", "Los rosquetes de batata. Parada obligatoria. No hace falta añadir más.", "#C8825F");
+        addMarker(28.4885315,-16.3183153, "We the North", "Buen sitio para desayunar. Cafe de especialidad y molletes un poco pijos.", "#C8825F");
+        addMarker(28.4907396,-16.3137281, "Restaurante Bejeque", "Fushion de comida canaria y asiatica. Esta curioso.", "#C8825F");
+        addMarker(28.4900488,-16.3203846, "Daiko Sushi Bar", "Si te apetece sushi, este es nuestro favorito en La Laguna", "#C8825F");
+        addMarker(28.4898381,-16.3189464, "El Rincon Extremeño", "Bar de tapitas. Todo muy bueno.", "#C8825F");
+        addMarker(28.4858533,-16.3137055, "Tasca Faracho", "Comida Canaria", "#C8825F");
+        addMarker(28.4897195,-16.3202445, "Arepera Punto Criollo", "En Tenerife son muy famosas las areperas, esta es una de las más míticas.", "#C8825F");
+        addMarker(28.560895,-16.2184479, "Guachinche Bibi y Mana", "Parada obligatoria. Sitio auténtico. Cuidado con el alioli que esta fuerte", "#C8825F");
+        addMarker(28.4632027,-16.2518035, "Churrería Presidente", "Cafeteria donde nos gusta desayunar cuando vamos a comprar al mercado.", "#C8825F");
+        addMarker(28.5037026,-16.1928129, "Restaurante Lena", "Si vas por esa zona puedes comer aquí", "#C8825F");
+        addMarker(28.3964085,-16.6476266, "Playa de los Roques", "", "#C8825F");
+        addMarker(28.3962952,-16.6518597, "Charco de la Laja", "", "#C8825F");
+        addMarker(28.400744,-16.6739668, "Charcho del Viento", "", "#C8825F");
+        addMarker(28.4705963,-16.434513, "Restaurante Xarko", "Uno de nuestros restaurantes favoritos. Además de su comida, vistas espectaculares.", "#C8825F");
+        addMarker(28.4783684,-16.4373465, "Nila", "", "#C8825F");
+        addMarker(28.4146269,-16.5065648, "El Calderito de la Abuela", "Lugar favorito de nuestras visitas. Al reservar, pedir asiento al lado de la cristalera.", "#C8825F");
+        addMarker(28.4122243,-16.50645, "Restaurante Casa Pedro", "Comida tradicional canaria. Restaurante económico.", "#C8825F");
+        addMarker(28.4229833,-16.4912298, "Guachinche Casa Lito", "Comida tradicional canaria. Restaurante económico.", "#C8825F");
+        addMarker(28.4537948,-16.4494899, "Guachinche La Huerta de Ana y Eva", "Comida tradicional canaria. Restaurante económico.", "#C8825F");
+        addMarker(28.3964094,-16.5041474, "Guachinche El Cubano", "Comida tradicional canaria. Restaurante económico.", "#C8825F");
+        addMarker(28.4188945,-16.505911, "Café Vista Paraíso", "Lugar ideal para un café y un momento dulce. Vistas espectaculares.", "#C8825F");
+        addMarker(28.4779076,-16.4375605, "Terrazas del Sauzal", "Terraza ideal tanto para tomar algo como para desayunar/brunch.", "#C8825F");
+        addMarker(28.4697102,-16.4343758, "La Baranda", "Chill-out", "#C8825F");
+        addMarker(28.3958913,-16.5940219, "Restaurante Mirador de San Pedro", "", "#C8825F");
+        addMarker(28.3672222,-16.7205556, "La Parada - Casa de Comidas", "", "#C8825F");
+        addMarker(28.3663656,-16.7213706, "Bodega Museo Malvasía", "Lugar ideal para degustar vinos canarios.", "#C8825F");
+        addMarker(28.3895026,-16.5241025, "Casa Egón", "Parada dulce", "#C8825F");
+        addMarker(28.3901815,-16.5235752, "Restaurante Dios Los Cría y el Viento los Amontona", "", "#C8825F");
+        addMarker(28.3908334,-16.5219059, "Dilecto Gastrobar", "", "#C8825F");
+        addMarker(28.4165482,-16.5534091, "Chicha Morada by Víctor Suárez", "Comida peruana", "#C8825F");
+        addMarker(28.4166235,-16.5532313, "Tasca Ihuey", "", "#C8825F");
+        addMarker(28.4159921,-16.552343, "Restaurante Zumaque", "", "#C8825F");
+        addMarker(28.4164402,-16.5525477, "La Cocina", "", "#C8825F");
+        addMarker(28.416802,-16.5192079, "Restaurante Bollullo", "Restaurante en la Playa del Bollullo", "#C8825F");
+        addMarker(28.3721686,-16.7660791, "Tasca Restaurante Los Pinos", "Uno de nuestros restaurantes favoritos (Solo aceptan efectivo)", "#C8825F");
+        addMarker(28.4820248, -16.4350912, "Serendipia", "Bar para tomar algo con unas vistas espectaculares", "#C8825F");
+        addMarker(28.0091127,-16.7087281, "Playa de Montaña Amarilla", "Playa de piedra volcánica. Uno de nuestros sitios favoritos, siempre llevamos a todas nuestras visitas. Es una playa de piedras, se aconsejan escarpines.", "#C8825F");
+        addMarker(28.1072304,-16.7629313, "Playa de Diego Hernández", "Otra de nuestras playas favoritas. Dificil de llegar, pero vale la pena.", "#C8825F");
+        addMarker(28.0444108,-16.5376151, "Madre Mía Burguers", "Si estas por el Medano y se te apetece una buena hamburguesa", "#C8825F");
+        addMarker(28.030271,-16.56337, "Chiringuito Pirata", "", "#C8825F");
+        addMarker(28.401154,-16.3286235, "Restaurante La Terraza de Monik", "Es un sitio un poco random de encontrar porque esta en el techo de un centro comercial. Pero es el mejor sitio calidad/precio de toda esta guía. Merece la parada.", "#C8825F");
+        addMarker(28.1330298,-16.5324019, "Restaurante el Secreto de Chimiche", "Muy top. Especializado en carnes.", "#C8825F");
+        addMarker(28.1081019,-16.498964, "Marisquería Agua y Sal", "", "#C8825F");
+        addMarker(28.0845028,-16.6070362, "El rinconcito de Hilario", "", "#C8825F");
+        addMarker(28.0548524,-16.7108683, "Pistacho Coffe Brunch", "Desayuno", "#C8825F");
+        addMarker(28.05019,-16.71985, "Restaurante El Cine", "Restaurante junto al puerto, conocido por el pulpo, las sardinas y el choco", "#C8825F");
+        addMarker(28.0517322,-16.7162042, "Oro di Napoli", "Pizzería (Pablo el pizzera da su aprobación, aunque las mejores de la isla las hace él)", "#C8825F");
+        addMarker(28.0546953,-16.7248195, "Restaurante Qapaq", "Comida peruana", "#C8825F");
+        addMarker(28.0566709,-16.7364202, "OA Beach Club", "Beach club para tomar algo", "#C8825F");
+        addMarker(28.1180521,-16.7763977, "Roca Negra Sunset Club", "Beach club para tomar algo", "#C8825F");
+
+
+
+        // Puntos clave (Rojo)
+        addMarker(28.3673, -16.8269, "Finca Quiñones (Boda)", "Lugar de la boda en Los Silos", "#9B4C34");
+        addMarker(28.4192, -16.5446, "Puerto de la Cruz (Preboda)", "Evento informal de la preboda", "#9B4C34");
+        addMarker(28.4827, -16.3421, "Aeropuerto Tenerife Norte (TFN)", "Aeropuerto recomendado", "#9B4C34");
         
         // Leyenda
         var legend = L.control({ position: "bottomright" });
         legend.onAdd = function (map) {
             var div = L.DomUtil.create("div", "legend");
-            div.innerHTML += '<span style="background: red"></span> Puntos clave<br>';
-            div.innerHTML += '<span style="background: blue"></span> Sitios turísticos<br>';
-            div.innerHTML += '<span style="background: green"></span> Restaurantes y guachinches';
+            div.innerHTML += '<span style="background: #9B4C34"></span> Puntos clave para la BODA<br>';
+            div.innerHTML += '<span style="background: #9E8431"></span> Sitios/actividades recomendadas<br>';
+            div.innerHTML += '<span style="background: #818E6E"></span> Lugares de Baño<br>';
+            div.innerHTML += '<span style="background: #C8825F"></span> Restaurantes y Guachinches';
             return div;
         };
         legend.addTo(map);
