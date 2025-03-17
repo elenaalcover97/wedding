@@ -27,7 +27,16 @@
             line-height: 1.5em;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            max-width: 90%;  /* Ajusta el ancho en móviles */
+            font-size: 14px; /* Reduce un poco el tamaño del texto */
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            z-index: 1000;  /* Asegura que esté por encima del mapa */
+            overflow-y: auto; /* Permite desplazamiento si es necesario */
+            max-height: 150px; /* Evita que sea demasiado grande */
         }
+
         .legend span {
             display: inline-block;
             width: 12px;
@@ -39,7 +48,7 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([28.2916, -16.6291], 10);
+        var map = L.map('map').setView([28.2916, -16.6291], 9);
         
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
